@@ -1,0 +1,166 @@
+{
+	"info": {
+		"_postman_id": "8e85dc1b-e0b8-4b4d-9d9c-734f73f86c81",
+		"name": "GreetApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8081/auth/nuevo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombres\": \"Andrew\",\r\n    \"apellidos\": \"Ramirez\",\r\n    \"nombreUsuario\": \"andrew.ramirez\",\r\n    \"email\": \"andrew@mail.com\",\r\n    \"edad\": 25,\r\n    \"cedula\": 1163,\r\n    \"direccion\": \"carrera 72a\",\r\n    \"celular\": 310649,\r\n    \"password\": \"andrew\",\r\n    \"roles\": [\"admin\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/auth/nuevo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"auth",
+						"nuevo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/auth/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombreUsuario\": \"marlon.ramirez\",\r\n    \"password\": \"marlon\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/auth/greet/es/marlon.ramirez",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/auth/greet/es/marlon.ramirez",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"auth",
+						"greet",
+						"es",
+						"marlon.ramirez"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/api/findUsuarios",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYXJsb24ucmFtaXJleiIsImlhdCI6MTYzNjU3MzcwNiwiZXhwIjoxNjM2NjA5NzA2fQ.bdApJGlnTLKz1UObGhNadOEI_CmlxHthPrk2-QixgbM0D9JxdtzPCrSQ0DddhnSNY68lZkDWNW4FF_WvKNhuzA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/listUsers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"listUsers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/auth/greet/en/marlon.ramirez",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/auth/greet/en/marlon.ramirez",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"auth",
+						"greet",
+						"en",
+						"marlon.ramirez"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/auth/greet/fr/marlon.ramirez",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/auth/greet/fr/marlon.ramirez",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"auth",
+						"greet",
+						"fr",
+						"marlon.ramirez"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
