@@ -32,7 +32,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/auth")
-@CrossOrigin
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
 public class AuthController {
     @Autowired
     PasswordEncoder passwordEncoder;
@@ -58,19 +58,24 @@ public class AuthController {
     @Autowired
     GreetFR greetFR;
 
-    @GetMapping("/greet/es/{id}")
-    public String greetEs(@PathVariable(name = "id") Integer id) {
-        return greetES.greet(id);
+    @GetMapping("/greet/es/{usuario}")
+    public ResponseEntity<?> greetEs(@PathVariable(name = "usuario") String usuario) {
+        return new ResponseEntity(new Mensaje(greetES.greet(usuario)), HttpStatus.CREATED);
     }
 
-    @GetMapping("/greet/en/{id}")
-    public String greetEn(@PathVariable(name = "id") Integer id) {
-        return greetEN.greet(id);
+    @GetMapping("/greet/en/{usuario}")
+    public ResponseEntity<?> greetEn(@PathVariable(name = "usuario") String usuario) {
+        return new ResponseEntity(new Mensaje(greetEN.greet(usuario)), HttpStatus.CREATED);
     }
 
-    @GetMapping("/greet/fr/{id}")
-    public String greetFr(@PathVariable(name = "id") Integer id) {
-        return greetFR.greet(id);
+    @GetMapping("/greet/fr/{usuario}")
+    public ResponseEntity<?> greetFr(@PathVariable(name = "usuario") String usuario) {
+        return new ResponseEntity(new Mensaje(greetFR.greet(usuario)), HttpStatus.CREATED);
+    }
+
+    @GetMapping("/findUsuario/{usuario}")
+    public Usuario PacienteId(@PathVariable(name = "usuario") String usuario) {
+        return usuarioService.getByNombreUsuario(usuario).get();
     }
 
     @PostMapping("/nuevo")

@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 @Transactional
 public class GreetES implements IGreet {
@@ -15,9 +17,10 @@ public class GreetES implements IGreet {
     IUsuarioDao usuarioRepository;
 
     @Override
-    public String greet(Integer id) {
-        Usuario usuario = usuarioRepository.findById(id).get();
-        return "Hola " + usuario.getNombres() + " " + usuario.getApellidos();
+    public String greet(String nombreUsuario) {
+        /*Usuario usuario = usuarioRepository.findById(id).get();*/
+        Optional<Usuario> user = usuarioRepository.findByNombreUsuario(nombreUsuario);
+        return "Hola " + user.get().getNombres() + " " + user.get().getApellidos();
     }
 
 }
